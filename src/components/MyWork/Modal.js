@@ -7,10 +7,10 @@ export default function Modal({
   setIndex,
   show,
   toggleModal,
-  index,
+  clickedIndex,
   dataLength,
 }) {
-  const { title, body, siteLink, codeLink, img } = data
+  const { title, body, siteLink, codeLink } = data
 
   const prevFocusedElement = useRef(null)
 
@@ -18,6 +18,7 @@ export default function Modal({
     document.querySelector('body').style.overflowY = 'hidden'
     document.querySelector('#modal-backdrop').style.overflowY = 'auto'
   }
+
 
   const showOverflow = () => {
     document.querySelector('body').style.overflowY = 'auto'
@@ -35,7 +36,7 @@ export default function Modal({
       prevFocusedElement.current?.focus()
     }
     return () => window.removeEventListener('keydown', handleKeyboardNavigation)
-  }, [show, index])
+  }, [show, clickedIndex])
 
   const handleKeyboardNavigation = e => {
     if (e.key === 'ArrowRight' || e.keyCode === 39) {
@@ -55,20 +56,22 @@ export default function Modal({
   }
 
   const next = () => {
-    if (index >= dataLength - 1) {
+    if (clickedIndex >= dataLength - 1) {
       setIndex(0)
     } else {
-      setIndex(index => index + 1)
+      setIndex(clickedIndex => clickedIndex + 1)
     }
   }
 
   const previous = () => {
-    if (index === 0) {
+    if (clickedIndex === 0) {
       setIndex(dataLength - 1)
     } else {
-      setIndex(index => index - 1)
+      setIndex(clickedIndex => clickedIndex - 1)
     }
   }
+
+
 
   return (
     <CSSTransition
@@ -85,7 +88,12 @@ export default function Modal({
         tabIndex={0}
       >
         <div className="container">
-          <img onClick={toggleModal} src={img} alt={title} />
+          <iframe
+            title={title}
+            className="wrapped-frame"
+            src={siteLink}
+            loading="lazy"
+          ></iframe>
           <button
             className="close-modal-btn"
             arial-label="Close My Work modal"
@@ -94,16 +102,16 @@ export default function Modal({
           >
             &times;
           </button>
-          <div className="modal content">
-            <h4>{title}</h4>
-            <p>{body}</p>
-            <a href={siteLink} rel="noopener noreferrer" target="_blank">
-              Visit Site
-            </a>
-            <a href={codeLink} rel="noopener noreferrer" target="_blank">
-              View Code
-            </a>
-          </div>
+        </div>
+        <div className="modal content">
+          <h4>{title}</h4>
+          <p>{body}</p>
+          <a href={siteLink} rel="noopener noreferrer" target="_blank">
+            Visit Site
+          </a>
+          <a href={codeLink} rel="noopener noreferrer" target="_blank">
+            View Code
+          </a>
         </div>
       </StyledModal>
     </CSSTransition>

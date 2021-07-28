@@ -1,37 +1,53 @@
+const author = "Riley Brown"
+const github ="riley-brown"
+const siteUrl = process.env.URL || process.env.DEPLOY_URL || `https://riley.gg`
+
 module.exports = {
   siteMetadata: {
-    title: ``,
-    description: `Riley Brown Web Development Portfolio. Showcasing freelance and side project work. Tech stack includes vanilla JS, React, and Node.js`,
-    author: `Riley Brown`,
+    title: `${author} Web Developer | Portfolio`,
+    description: `${author} Web Development Portfolio. Showcasing freelance and side project work. Tech stack includes vanilla JS, React, and Node.js`,
+    author,
+    github,
+    siteUrl,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: 'website',
+        path: `${__dirname}/src/data/website.json`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: `gatsby-transformer-json`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
+        typeName: `Json`, // a fixed string
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
-    `gatsby-plugin-styled-components`,
-    `gatsby-plugin-image`,
-    'gatsby-plugin-root-import',
+    {
+      resolve: `gatsby-transformer-sharp`,
+      options: {
+        // The option defaults to true
+        checkSupportedExtensions: false,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `carouselImages`,
+        path: `${__dirname}/src/images/carousel`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `sitePreviewImages`,
+        path: `${__dirname}/src/images/site-preview`,
+      },
+    }
   ],
 }

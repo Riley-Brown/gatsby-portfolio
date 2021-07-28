@@ -1,8 +1,8 @@
 import React from 'react'
 import Fade from 'react-reveal/Fade'
-import LazyLoad from 'react-lazy-load'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
-export default function Card({ img, activeModalImg, index, title }) {
+export default function Card({ image, activeModalImg, index, title }) {
   return (
     <Fade>
       <button
@@ -10,9 +10,7 @@ export default function Card({ img, activeModalImg, index, title }) {
         aria-label={`View ${title} image`}
         onClick={() => activeModalImg(index)}
       >
-        <LazyLoad offsetVertical={500} debounce={false}>
-          <img src={img} alt={title} />
-        </LazyLoad>
+        <GatsbyImage image={getImage(image)} alt={title} placeholder="tracedSVG" />
       </button>
     </Fade>
   )

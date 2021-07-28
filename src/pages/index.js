@@ -8,11 +8,12 @@ import Testimonials from '../components/Testimonials'
 import MyWork from '../components/MyWork'
 import About from '../components/About'
 import GitHub from '../components/GitHub'
-import metadataLanding from '../images/metadata-landing.jpg'
+import metadataLanding from '../images/metadata-landing.png'
+import gatsbyConfig from '../../gatsby-config'
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Riley Brown Web Developer | Portfolio" img={metadataLanding} />
+    <SEO title={gatsbyConfig.siteMetadata.title} img={metadataLanding} />
     <Landing />
     <Testimonials />
     <MyWork />

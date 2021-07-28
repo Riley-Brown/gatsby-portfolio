@@ -46,7 +46,7 @@ export default function About() {
           <div className="about" id="about">
             <h2>About Me</h2>
             <p>
-              I am a 23 year old developer with a focus on web technology. I
+              I a good-looking developer with a focus on web technology. I
               discovered web development in early 2018 and have been fascinated
               with it ever since.
             </p>
@@ -62,8 +62,7 @@ export default function About() {
               Python and C. Most importantly, I learned how to learn.
             </p>
             <p>
-              I am currently working as a front-end developer for an awesome
-              startup in NYC and am loving every second of it.
+              I am currently working. 
             </p>
           </div>
         </Fade>
