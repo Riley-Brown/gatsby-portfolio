@@ -46,9 +46,12 @@ export default function About() {
           <div className="about" id="about">
             <h2>About Me</h2>
             <p>
-              I am a 23 year old developer with a focus on web technology. I
-              discovered web development in early 2018 and have been fascinated
-              with it ever since.
+              I am a{' '}
+              {new Date(new Date() - new Date('6/1/1996')).getUTCFullYear() -
+                1970}{' '}
+              year old developer with a focus on web technology. I discovered
+              web development in early 2018 and have been fascinated with it
+              ever since.
             </p>
             <p>
               I started with HTML on CodeCademy, then CSS and JavaScript. I
@@ -60,10 +63,6 @@ export default function About() {
               I started Lambda School's 9 month coding school in late August
               2018, and learned valuable skills such as React, Node.js, SQL,
               Python and C. Most importantly, I learned how to learn.
-            </p>
-            <p>
-              I am currently working as a front-end developer for an awesome
-              startup in NYC and am loving every second of it.
             </p>
           </div>
         </Fade>
